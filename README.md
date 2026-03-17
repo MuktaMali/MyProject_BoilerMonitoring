@@ -1,5 +1,6 @@
 Industrial Boiler Safety & Monitoring System (IBSMS)
 1. Project Overview
+   
 The Industrial Boiler Safety & Monitoring System (IBSMS) simulates a safety monitoring system used in large industrial plants where boilers generate steam for manufacturing processes.
 Industrial boilers operate under high pressure and temperature, and failures can lead to catastrophic accidents. Therefore, modern plants deploy real-time monitoring systems that continuously track parameters such as:
 Pressure
@@ -10,8 +11,8 @@ This project simulates such a system using Linux system programming concepts inc
 The system will detect abnormal conditions and trigger automatic safety responses, such as emergency shutdown.
 The project is implemented in C and runs on Linux systems like Ubuntu using the GNU Compiler Collection.
 
-2. Real World Scenario
-In real industrial plants:
+2. Real World Scenario in real industrial plants:
+   
 Boilers generate steam for turbines or production lines.
 Multiple sensors continuously monitor safety parameters.
 A control system analyzes sensor data.
@@ -67,77 +68,29 @@ Example output:
 Boiler controller started
 Sensor process started
 Temp:84  Pressure:127  Water:29  Gas:0
+
 Temp:105  Pressure:145  Water:43  Gas:4
+
 WARNING: Gas Leak!
+
 Temp:82  Pressure:127  Water:83  Gas:0
+
 Temp:83  Pressure:184  Water:92  Gas:2
+
 WARNING: High Pressure!
+
 Temp:111  Pressure:155  Water:46  Gas:0
+
 WARNING: Temperature Critical!
+
 Temp:106  Pressure:119  Water:59  Gas:1
+
 Temp:89  Pressure:120  Water:49  Gas:3
+
 Temp:111  Pressure:155  Water:70  Gas:1
+
 WARNING: Temperature Critical!
-Temp:105  Pressure:152  Water:48  Gas:0
-Temp:119  Pressure:192  Water:89  Gas:1
-WARNING: High Pressure!
-WARNING: Temperature Critical!
-Temp:91  Pressure:125  Water:21  Gas:4
-WARNING: Gas Leak!
-Temp:79  Pressure:114  Water:81  Gas:2
-Temp:91  Pressure:179  Water:43  Gas:4
-WARNING: Gas Leak!
-Temp:71  Pressure:102  Water:95  Gas:0
-Temp:94  Pressure:145  Water:5  Gas:1
-WARNING: Water Level Low!
-Temp:72  Pressure:128  Water:72  Gas:2
-Temp:102  Pressure:120  Water:57  Gas:1
-Temp:84  Pressure:147  Water:42  Gas:0
-Temp:94  Pressure:116  Water:69  Gas:3
-Temp:100  Pressure:102  Water:38  Gas:3
-Temp:102  Pressure:181  Water:13  Gas:0
-WARNING: High Pressure!
-WARNING: Water Level Low!
-Temp:105  Pressure:108  Water:55  Gas:0
-Temp:75  Pressure:113  Water:78  Gas:3
-Temp:113  Pressure:150  Water:97  Gas:0
-WARNING: Temperature Critical!
-Temp:92  Pressure:155  Water:6  Gas:2
-WARNING: Water Level Low!
-Temp:74  Pressure:100  Water:74  Gas:3
-Temp:86  Pressure:196  Water:63  Gas:3
-WARNING: High Pressure!
-Temp:118  Pressure:101  Water:2  Gas:2
-WARNING: Temperature Critical!
-WARNING: Water Level Low!
-Temp:104  Pressure:115  Water:17  Gas:2
-WARNING: Water Level Low!
-Temp:95  Pressure:125  Water:84  Gas:1
-Temp:108  Pressure:162  Water:91  Gas:3
-Temp:84  Pressure:188  Water:8  Gas:1
-WARNING: High Pressure!
-WARNING: Water Level Low!
-Temp:115  Pressure:166  Water:25  Gas:4
-WARNING: Temperature Critical!
-WARNING: Gas Leak!
-Temp:88  Pressure:100  Water:79  Gas:0
-Temp:116  Pressure:143  Water:85  Gas:1
-WARNING: Temperature Critical!
-Temp:116  Pressure:187  Water:79  Gas:3
-WARNING: High Pressure!
-WARNING: Temperature Critical!
-Temp:74  Pressure:148  Water:5  Gas:0
-WARNING: Water Level Low!
-Temp:93  Pressure:141  Water:63  Gas:3
-Temp:73  Pressure:106  Water:46  Gas:2
-Temp:114  Pressure:106  Water:5  Gas:2
-WARNING: Temperature Critical!
-WARNING: Water Level Low!
-Temp:94  Pressure:131  Water:43  Gas:3
-Temp:103  Pressure:123  Water:30  Gas:1
-Temp:88  Pressure:115  Water:77  Gas:1
-Temp:73  Pressure:108  Water:49  Gas:2
-^C
+
 Emergency Shutdown Triggered
 
 System calls used:
@@ -250,25 +203,8 @@ Each sensor produces data periodically.
 Example:
 sleep(1)
 This simulates real sensor polling intervals.
-
-9. Project Folder Structure
-boiler_monitor/
-│
-├── Makefile
-├── main.c
-├── controller.c
-├── controller.h
-├── sensors.c
-├── sensors.h
-├── ipc.c
-├── ipc.h
-├── logger.c
-├── logger.h
-├── signal_handler.c
-├── signal_handler.h
-  
-
-10. System Programming Features Used
+   
+9. System Programming Features Used
     
 Requirement	Implementation
 Multiple processes	fork()
