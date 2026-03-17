@@ -47,11 +47,17 @@ This project simulates that behavior.
                      (Sensor Simulation)
 
 Components:
+
 Boiler Controller
+
 Sensor Data Generator
+
 Sensor Threads
+
 IPC Communication
+
 Signal-based Emergency Shutdown
+
 Logging System
 
 4. System Components
@@ -59,11 +65,17 @@ Logging System
 
 This process represents the industrial control system.
 Responsibilities:
+
 Receive sensor data
+
 Analyze values
+
 Detect unsafe conditions
+
 Trigger emergency shutdown
+
 Log system events
+
 Example output:
 Boiler controller started
 Sensor process started
@@ -94,96 +106,152 @@ WARNING: Temperature Critical!
 Emergency Shutdown Triggered
 
 System calls used:
+
 fork()
+
 waitpid()
+
 read()
+
 write()
 
 4.2 Sensor Data Generator (Child Process)
 This process simulates hardware sensors.
 Responsibilities:
+
 Generate simulated sensor readings
+
 Send readings to controller
+
 Update shared system status
+
 The process creates multiple threads, each simulating a different sensor.
 
 4.3 Sensor Threads
 Each thread represents a specific sensor.
 Examples:
 Thread	Sensor
+
 Thread 1	Temperature sensor
+
 Thread 2	Pressure sensor
+
 Thread 3	Water level sensor
+
 Thread 4	Gas leakage sensor
+
 
 Threads generate data using random values:
 Example:
+
 Temperature :- 80-120°C
+
 Pressure :- 100–200 PSI
+
 Water level :- 10–100 %
+
 Gas :- 0–5 ppm
 
 Thread functions:
 
+
 pthread_create()
+
 pthread_mutex_lock()
+
 pthread_mutex_unlock()
 
 5. Inter-Process Communication (IPC)
+
 The system uses two IPC mechanisms.
+
 5.1 Pipe Communication
+
 Used to send sensor readings from child process to controller.
+
 Data flow:
+
 Sensors ---- Child Process ---- Pipe ----- Controller
 
 Functions used:
+
 pipe()
+
 read()
+
 write()
 
 5.2 Shared Memory
 Shared memory stores current system state.
+
 Example stored values:
+
 Last temperature
+
 Last pressure
+
 Boiler status
+
 Emergency flag
 
 Functions used:
+
 shmget()
+
 shmat()
+
 shmdt()
+
 shmctl()
+
 Shared memory allows fast access to system status.
 
 6. Signal Handling
 Signals simulate emergency controls used in industrial systems.
+
 Example signals:
-Signal	Purpose
-SIGINT	Manual shutdown
-SIGTERM	System termination
-SIGUSR1	Emergency stop
+Signal-	Purpose
+
+SIGINT-	Manual shutdown
+
+SIGTERM-	System termination
+
+SIGUSR1-	Emergency stop
 
 Example scenario:
 Operator presses emergency stop → system sends signal → boiler stops immediately.
+
 Signal functions:
+
 signal()
+
 kill()
 
 7. File Logging System
 Industrial systems always maintain event logs for safety audits.
+
 This project writes logs to:
+
 logs/boiler.log
+
 Example log entries:
+
 [INFO] Boiler started
+
 [DATA] Temp=92C Pressure=140PSI
+
 [WARNING] High pressure detected
+
 [ALERT] Emergency shutdown activated
 
 Functions used:
+
 open()
+
 write()
+
 lseek()
+
 close()
 
 lseek() allows updating log headers or metadata.
@@ -191,12 +259,19 @@ lseek() allows updating log headers or metadata.
 8. Simulated Data
 Since no real sensors exist, the system simulates readings using:
 Random Number Generator
+
 rand()
+
 Example values:
+
 Temperature: 70–120
+
 Pressure: 100–200
+
 Water level: 10–100
+
 Gas leak: 0–5
+
 Timers
 
 Each sensor produces data periodically.
@@ -206,14 +281,22 @@ This simulates real sensor polling intervals.
    
 9. System Programming Features Used
     
-Requirement	Implementation
 Multiple processes	fork()
+
 Process synchronization	waitpid()
+
 Multithreading	pthread_create()
+
 Thread synchronization	mutex
+
 IPC mechanism 1	pipe
+
 IPC mechanism 2	shared memory
+
 Signals	SIGINT emergency stop
+
 File handling	log system
+
 Random simulation	rand()
+
 Timers	sleep()
