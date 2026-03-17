@@ -29,6 +29,7 @@ Stop all related processes safely
 This project simulates that behavior.
 
 3. System Architecture
+
                  +---------------------------+
                  |  Boiler Control System   |
                  |   (Parent Process)       |
